@@ -1,0 +1,105 @@
+<!--2. A teacher has created a gradeLabs function that verifies if student programming
+labs work. This function loops over an array of JavaScript objects that should contain
+a student property and runLab property. The runLab property is expected to be a
+function containing the student's code. The runLab function is called and the result is
+compared to the expected result. If the result and expected result don't match, then the
+lab is considered a failure.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Lab Grading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+            font-weight: bolder;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .failure {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Lab Grading</h2>
+    <p>Click the button below to grade the students' labs:</p>
+    <button onclick="gradeLabs()">Grade Labs</button>
+
+    <div id="output"></div>
+
+    <script>
+        function gradeLabs() {
+            const studentLabs = [
+                {
+                    student: 'Carly',
+                    runLab: function(num) {
+                        return Math.pow(num, num);
+                    }
+                },
+                {
+                    student: 'Erica',
+                    runLab: function(num) {
+                        return num * num;
+                    }
+                },
+                {
+                    student: 'Blake',
+                    runLab: function(num) {
+                        return num + num;
+                    }
+                }
+            ];
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Clear previous output
+
+            studentLabs.forEach(lab => {
+                let result;
+                try {
+                    if (typeof lab.runLab !== 'function') {
+                        throw new Error(`${lab.student} does not have a valid runLab function.`);
+                    }
+                    result = lab.runLab(3);
+                    const expected = 27;
+                    const success = result === expected;
+                    const resultText = success ? 'Success' : 'Failure';
+                    const resultClass = success ? 'success' : 'failure';
+                    outputDiv.innerHTML += `
+                        <div class="result ${resultClass}">
+                            <strong>${lab.student}'s Lab:</strong> ${resultText} (Expected: ${expected}, Got: ${result})
+                        </div>
+                    `;
+                } catch (error) {
+                    outputDiv.innerHTML += `
+                        <div class="result failure">
+                            <strong>${lab.student}'s Lab:</strong> Error - ${error.message}
+                        </div>
+                    `;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

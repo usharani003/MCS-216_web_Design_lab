@@ -1,0 +1,23 @@
+<!-- 3. Write the JavaScript code to change the color of the HTML element h2 to green, on
+click the "change color" button.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Heading Color</title>
+  <script>
+    function changeColor() {
+      // Access the h2 element by its ID
+      var heading = document.getElementById("myHeading");
+
+      // Change the color to green
+      heading.style.color = "green";
+    }
+  </script>
+</head>
+<body>
+  <h2 id="myHeading">Click the button to change my color</h2>
+  <button onclick="changeColor()">Change Color</button>
+</body>
+</html>

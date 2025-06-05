@@ -1,0 +1,40 @@
+<!--1. Create an HTML webpage, as shown in figure. The user can specify any expression
+as input. Use form element to collect the user data-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expression Input Form</title>
+  <style> 
+    .border{
+        border-style: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter Expressions</h2>
+  <form action="#" method="post">
+    <table border="1">
+      <tr>
+        <th>Expression</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td><input class="border" type="text" name="expr1" placeholder="e.g., 1+1"></td>
+        <td><input class="border" type="text" name="result1" readonly></td>
+      </tr>
+      <tr>
+        <td><input class="border" type="text" name="expr2" placeholder="e.g., 2*3"></td>
+        <td><input class="border" type="text" name="result2" readonly></td>
+      </tr>
+    </table>
+    <br>
+    <input  type="submit" value="Submit">
+  </form>
+
+</body>
+</html>
+
+

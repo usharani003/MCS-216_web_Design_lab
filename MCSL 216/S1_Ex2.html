@@ -1,0 +1,22 @@
+<!-- 2. Write a JavaScript code to print 1 for 1 time, 2 for 2 times, 3 for 3 times and so on
+upto 10.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Pattern</title>
+</head>
+<body>
+    <h2>Number Pattern Output</h2>
+    <pre id="output"></pre>
+
+    <script>
+        let output = '';
+        for (let i = 1; i <= 10; i++) {
+            output += (String(i) + ' ').repeat(i) + '\n';
+        }
+        document.getElementById('output').textContent = output;
+    </script>
+</body>
+</html>

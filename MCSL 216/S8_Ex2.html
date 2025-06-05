@@ -1,0 +1,93 @@
+<!-- 2) create a object 'product ' with properties: ID,name, Description and price.Then create function for this object called displayProductDetails().this function when invoked should display the name description and discounted price of the product .for the calculation of discounted price you need to create another fucntion calculateDisc(percentage).the discount percentage would be given by user-->
+<!--Certainly! Let's create a JavaScript object named product with properties such as ID, name, description, and price. We'll also implement two functions:
+
+calculateDisc(percentage): Calculates the discounted price based on the given percentage.
+
+displayProductDetails(): Displays the product's name, description, and the discounted price.
+
+Here's the complete implementation-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Discount Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        input{
+            width: 169px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Product Discount Calculator</h2>
+    <p>Enter the discount percentage:</p>
+    <input type="number" id="discountInput" min="0" max="100" placeholder="Enter discount percentage">
+    <button onclick="displayProductDetails()">Calculate Discount</button>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        // Product object definition
+        const product = {
+            id: 101,
+            name: 'Wireless Headphones',
+            description: 'Noise-cancelling over-ear headphones with 20-hour battery life.',
+            price: 2999,
+
+            // Method to calculate discounted price
+            calculateDisc: function (percentage) {
+                return this.price - (this.price * (percentage / 100));
+            },
+
+            // Method to display product details
+            displayProductDetails: function () {
+                const discountPercentage = parseFloat(document.getElementById('discountInput').value);
+                if (isNaN(discountPercentage) || discountPercentage < 0 || discountPercentage > 100) {
+                    return 'Please enter a valid discount percentage between 0 and 100.';
+                }
+                const discountedPrice = this.calculateDisc(discountPercentage);
+                return `
+                    <strong>Product Name:</strong> ${this.name}<br>
+                    <strong>Description:</strong> ${this.description}<br>
+                    <strong>Original Price:</strong> ₹${this.price.toFixed(2)}<br>
+                    <strong>Discounted Price (${discountPercentage}%):</strong> ₹${discountedPrice.toFixed(2)}
+                `;
+            }
+        };
+
+        // Function to display product details
+        function displayProductDetails() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = product.displayProductDetails();
+        }
+    </script>
+
+</body>
+
+</html>

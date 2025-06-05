@@ -1,0 +1,53 @@
+<!--2. Sometimes we use external resource files in our HTML page. The content of an
+external file cannot be used until loaded completely. This can be implemented with
+JavaScript Callback. Design a web page which loads an external HTML file on the
+event: onLoad. Hint: use the inbuilt class XMLHttpRequest() to use its functions:
+open(), onLoad() etc. to load an external HTML file.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load External HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>External HTML Content</h2>
+    <button onclick="loadExternalHTML()">Load Content</button>
+
+    <div id="content">Content will appear here...</div>
+
+    <script>
+        function loadExternalHTML() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'external-content.html', true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('content').innerHTML = xhr.responseText;
+                } else {
+                    document.getElementById('content').innerHTML = 'Failed to load content.';
+                }
+            };
+
+            xhr.onerror = function() {
+                document.getElementById('content').innerHTML = 'An error occurred during the request.';
+            };
+
+            xhr.send();
+        }
+    </script>
+
+</body>
+</html>

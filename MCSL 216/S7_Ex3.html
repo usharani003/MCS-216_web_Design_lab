@@ -1,0 +1,74 @@
+<!--3. There is an array of animals. The user is asked to enter the index for the animal they
+want to see.
+i) If the user enters an index that does NOT contain an animal, the code will throw a
+TypeError when name is referenced on an undefined value.
+ii) Update the above program to print out the index the user entered. We want this
+message to be printed EVERY time the code runs-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Animal Selector</h2>
+    <p>Enter the index (0-2) to select an animal:</p>
+    <input type="number" id="indexInput" min="0" max="2">
+    <button onclick="selectAnimal()">Select Animal</button>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        const animals = ['Lion', 'Tiger', 'Bear'];
+
+        function selectAnimal() {
+            const index = parseInt(document.getElementById('indexInput').value);
+            const messageDiv = document.getElementById('message');
+
+            // Display the index entered by the user
+            messageDiv.innerHTML = `<strong>You entered index: ${index}</strong><br><br>`;
+
+            try {
+                // Check if the index is within the valid range
+                if (index < 0 || index >= animals.length) {
+                    throw new RangeError('Index out of bounds');
+                }
+
+                // Display the selected animal
+                messageDiv.innerHTML += `<span class="success">  You selected: ${animals[index]}</span>`;
+            } catch (error) {
+                // Handle errors
+                if (error instanceof RangeError) {
+                    messageDiv.innerHTML += `<span class="error">${error.message}</span>`;
+                } else {
+                    messageDiv.innerHTML += `<span class="error">An unexpected error occurred: ${error.message}</span>`;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

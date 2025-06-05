@@ -1,0 +1,34 @@
+<!-- 2. Which JavaScript function can be used to dynamically add a event listener to a
+HTML Element?-->
+
+<!--
+To dynamically add an event listener to an HTML element in JavaScript, you can use the addEventListener() method. This method allows you to attach an event handler to an element without overwriting existing event handlers, enabling multiple event listeners of the same type on a single element
+syntax
+    element.addEventListener(event, function, useCapture);
+
+event: A string representing the event type to listen for (e.g., 'click', 'mouseover').
+
+function: The function to execute when the event is triggered.
+
+useCapture (optional): A boolean value that specifies whether the event should be captured during the capturing phase (true) or the bubbling phase (false). The default is false
+
+✅ Example
+Here's an example of how to add a click event listener to a button dynamically:
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function() {
+    alert('Button clicked!');
+    });
+
+In this example, when the button with the ID myButton is clicked, an alert box will appear with the message "Button clicked!".
+
+🧠 Notes
+Multiple Event Handlers: Unlike the traditional onclick property, addEventListener() allows you to add multiple event handlers for the same event on a single element. 
+
+
+Separation of Concerns: Using addEventListener() helps keep your JavaScript code separate from your HTML markup, promoting cleaner and more maintainable code. 
+W3Schools
+
+Event Delegation: For dynamically added elements, consider using event delegation by attaching a single event listener to a parent element and using the event.target property to determine which child element triggered the event. 
+
+If you need further assistance or examples on using addEventListener() with dynamically created elements or event delegation, feel free to ask!
+-->

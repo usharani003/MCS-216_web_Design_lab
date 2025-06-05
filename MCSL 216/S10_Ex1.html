@@ -1,0 +1,69 @@
+<!--1.Create an HTML web page, as shown below. The cookie will be set on pressing
+setCookie button and the stored cookie value will be displayed on pressing getCookie
+button.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #cookieValue {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Cookie Management</h2>
+    <label for="cookieName">Cookie Name:</label>
+    <input type="text" id="cookieName" placeholder="Enter cookie name">
+    <label for="cookieValueInput">Cookie Value:</label>
+    <input type="text" id="cookieValueInput" placeholder="Enter cookie value">
+    <button onclick="setCookie()">Set Cookie</button>
+    <button onclick="getCookie()">Get Cookie</button>
+
+    <div id="cookieValue">Cookie value will appear here...</div>
+
+    <script>
+        // Function to set a cookie
+        function setCookie() {
+            const name = document.getElementById('cookieName').value;
+            const value = document.getElementById('cookieValueInput').value;
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 year from now
+            const expiresString = `expires=${expires.toUTCString()}`;
+            document.cookie = `${name}=${value}; ${expiresString}; path=/`;
+            alert(`Cookie "${name}" has been set.`);
+        }
+
+        // Function to get a cookie by name
+        function getCookie() {
+            const name = document.getElementById('cookieName').value;
+            const cookieName = `${name}=`;
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            let cookieValue = 'Cookie not found.';
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cookieName) == 0) {
+                    cookieValue = c.substring(cookieName.length, c.length);
+                    break;
+                }
+            }
+            document.getElementById('cookieValue').textContent = `Value of "${name}": ${cookieValue}`;
+        }
+    </script>
+
+</body>
+</html>

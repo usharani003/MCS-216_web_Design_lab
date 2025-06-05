@@ -1,0 +1,29 @@
+<!-- 2. Modify the below snippet of the code to change the src attribute of the image
+HOHPHQW WR ³STU.MSJ´ XVLQJ HTML DOM.
+<img id="pic" src="old.jpg">
+<script>
+//Write your code here.
+</script>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Image Source</title>
+  <script>
+    function changeImageSource() {
+      // Access the image element by its ID
+      var image = document.getElementById("pic");
+
+      // Change the src attribute to the new image
+      image.src = "./Images/ignou.jpg";
+      image.style.width = "300px";  // Adjust width as needed
+      image.style.height = "auto"; 
+    }
+  </script>
+</head>
+<body>
+  <img id="pic" src="./Images/neighbor1.jpg" alt="Old Image">
+  <button onclick="changeImageSource()">Change Image</button>
+</body>
+</html>

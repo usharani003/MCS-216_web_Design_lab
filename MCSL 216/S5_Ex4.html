@@ -1,0 +1,54 @@
+<!-- 4)Design HTML page to implement HTML DOM events by changing an image on
+the following events: onmouseoveronmouseout, onmousedown, and onmouseup
+Events. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Change</title>
+    <style>
+        #image {
+            width: 300px;
+            height:auto;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Interactive Image Change on Mouse Events</h1>
+    <img id="image" src="./Images/ignou.jpg" alt="Interactive Image">
+
+    <script>
+        const img = document.getElementById('image');
+
+        // onmouseover: Change image on mouse over
+        img.onmouseover = function () {
+            img.src = './Images/neighbor1.jpg';
+            img.alt = 'Mouse Over Image';
+        };
+
+        // onmouseout: Revert image on mouse out
+        img.onmouseout = function () {
+            img.src = './Images/neighbor2.jpg';
+            img.alt = 'Original Image';
+        };
+
+        // onmousedown: Change image on mouse button press
+        img.onmousedown = function () {
+            img.src = './Images/neighbor3.jpg';
+            img.alt = 'Mouse Down Image';
+        };
+
+        // onmouseup: Revert image on mouse button release
+        img.onmouseup = function () {
+            img.src = './Images/ignou.jpg';
+            img.alt = 'Mouse Up Image';
+        };
+    </script>
+</body>
+
+</html>

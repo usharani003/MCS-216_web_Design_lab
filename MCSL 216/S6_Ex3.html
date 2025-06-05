@@ -1,0 +1,37 @@
+<!-- 3. Which method should be used to add a new HTML child element?
+ 
+To dynamically add a new HTML child element to an existing parent element, you can use the appendChild() method in JavaScript.
+
+🧠 How appendChild() Works
+The appendChild() method appends a node (such as an element or text node) to the end of the list of children of a specified parent node. If the node already exists in the DOM, it is moved from its current position to the new position. This method returns the appended node.
+syntax:
+    parentNode.appendChild(childNode);
+parentNode: The parent element to which the child node will be appended.
+
+childNode: The node to append (it must be a Node object, such as an element or text node).
+
+🔧 Example
+Here's an example of how to create a new <p> element with some text and append it to an existing <div> with the ID container:
+
+    const para = document.createElement("p");
+    const text = document.createTextNode("This is a new paragraph.");
+    para.appendChild(text);
+    document.getElementById("container").appendChild(para);
+In this example:
+
+A new <p> element is created using document.createElement("p").
+
+A text node is created with the content "This is a new paragraph." using document.createTextNode().
+
+The text node is appended to the paragraph element using appendChild().
+
+The paragraph element is then appended to the parent element with the ID container.
+
+📌 Notes
+Moving Existing Nodes: If the childNode already exists in the DOM, appendChild() moves it from its current position to the new position. 
+
+Performance Considerations: When inserting multiple elements, consider using a DocumentFragment to reduce reflows and improve performance. 
+
+Difference from append(): Unlike appendChild(), the append() method can append multiple nodes and strings and does not return the appended node. 
+For more detailed information, you can refer to the MDN documentation on appendChild().
+-->

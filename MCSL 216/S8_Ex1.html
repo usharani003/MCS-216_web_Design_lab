@@ -1,0 +1,121 @@
+<!--1. Let us assume you need to organize a library of some electronic manuals and novels
+for a particular company. For each book, you need to store following information:
+ The title
+ The author
+ The copyright date
+ The ISBN
+ The number of pages
+ The number of times the book has been checked out.
+ Whether the book has been discarded
+Company wants to perform certain actions when the any book is outdated. The
+manual books must be exited after 5 years while a novel book should be exited if its
+checked out time crossed 100.
+Task 1.Construct three classes that hold the information needed by company. One
+class should be a Book class and two child classes of the Book class called Manual
+and Novel. Each class will contain two methods. One will be a constructor. The other
+one will either be in charge of disposal of the book or updating the property related to
+the number of times a book has been checked out.
+Task 2: Create an object of the Novel class and Manual class with some valid details.
+Task 3: Write the method to count the duration of a manual book and checkout time
+for novel book so that they can be discarded based on the duration. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+        }
+        .message {
+            margin-top: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Library Book Management</h2>
+    <p>Click the button below to check the status of the books:</p>
+    <button onclick="checkBooks()">Check Books</button>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        // Base class for all books
+        class Book {
+            constructor(title, author, copyrightDate, isbn, numPages, checkouts) {
+                this.title = title;
+                this.author = author;
+                this.copyrightDate = new Date(copyrightDate);
+                this.isbn = isbn;
+                this.numPages = numPages;
+                this.checkouts = checkouts;
+            }
+        }
+
+        // Manual class extends Book
+        class Manual extends Book {
+            constructor(title, author, copyrightDate, isbn, numPages, checkouts) {
+                super(title, author, copyrightDate, isbn, numPages, checkouts);
+            }
+
+            // Method to check if the manual should be discarded
+            checkStatus() {
+                const currentYear = new Date().getFullYear();
+                const age = currentYear - this.copyrightDate.getFullYear();
+                if (age > 5) {
+                    return `1)Manual "${this.title}" is outdated and should be discarded.`;
+                } else {
+                    return `1)Manual "${this.title}" is up-to-date.`;
+                }
+            }
+        }
+
+        // Novel class extends Book
+        class Novel extends Book {
+            constructor(title, author, copyrightDate, isbn, numPages, checkouts) {
+                super(title, author, copyrightDate, isbn, numPages, checkouts);
+            }
+
+            // Method to check if the novel should be discarded
+            checkStatus() {
+                if (this.checkouts > 100) {
+                    return `2)Novel "${this.title}" has been checked out more than 100 times and should be discarded.`;
+                } else {
+                    return `2)Novel "${this.title}" is available for checkout.`;
+                }
+            }
+        }
+
+        // Function to create instances and check their status
+        function checkBooks() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = ''; // Clear previous messages
+
+            // Create instances of Manual and Novel
+            const manualBook = new Manual("JavaScript: The Good Parts", "Douglas Crockford", "2008-01-01", "978-0596517748", 176, 50);
+            const novelBook = new Novel("The Great Gatsby", "F. Scott Fitzgerald", "1925-04-10", "978-0743273565", 180, 120);
+
+            // Display their status
+            messageDiv.innerHTML += `<div class="message">${manualBook.checkStatus()}</div>`;
+            messageDiv.innerHTML += `<div class="message">${novelBook.checkStatus()}</div>`;
+        }
+    </script>
+
+</body>
+</html>

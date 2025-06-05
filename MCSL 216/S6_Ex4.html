@@ -1,0 +1,97 @@
+<!--4. Using the DOM API, create a product details page which shows the prices of a
+laptop and a cell phone. You may paragraph tag to wrap these elements. When the
+user clicks on add button, you should able to add TV with price details and when you
+click on delete button then cell phone details will be deleted. 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+        }
+
+        #btnId {
+            color: white;
+        }
+
+        .product {
+            margin-bottom: 15px;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btnId">
+        <h2>Product Details</h2>
+
+        <div id="productList">
+            <div class="product" id="laptop">
+                <p><strong>Laptop</strong></p>
+                <p>Price: ₹60,000</p>
+            </div>
+            <div class="product" id="cellPhone">
+                <p><strong>Cell Phone</strong></p>
+                <p>Price: ₹30,000</p>
+            </div>
+        </div>
+    </div>
+    <button id="addTV">Add TV</button>
+    <button id="deleteCellPhone">Delete Cell Phone</button>
+
+    <script>
+        // Function to add a new product
+        function addProduct(id, name, price) {
+            const productList = document.getElementById('productList');
+
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.id = id;
+
+            const productName = document.createElement('p');
+            productName.innerHTML = `<strong>${name}</strong>`;
+            const productPrice = document.createElement('p');
+            productPrice.textContent = `Price: ₹${price}`;
+
+            productDiv.appendChild(productName);
+            productDiv.appendChild(productPrice);
+            productList.appendChild(productDiv);
+        }
+
+        // Function to delete a product
+        function deleteProduct(id) {
+            const product = document.getElementById(id);
+            if (product) {
+                product.remove();
+            }
+        }
+
+        // Event listeners for buttons
+        document.getElementById('addTV').addEventListener('click', function () {
+            addProduct('tv', 'TV', '40,000');
+        }, { once: true });
+
+        document.getElementById('deleteCellPhone').addEventListener('click', function () {
+            deleteProduct('cellPhone');
+        });
+    </script>
+
+</body>
+
+</html>

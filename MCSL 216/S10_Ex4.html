@@ -1,0 +1,115 @@
+<!--4. Create an HTML web page, as shown below. The cookie1 and cookie2 will be set
+on pressing Set Cookie1or Set Cookie2 button and the stored cookie value will be
+displayed on pressing Get Cookie1 or Get Cookie2 button respectively. On the other
+hand selectively cookie can be deleted by pressing Delete Cookie1 or Delete Cookie2
+button. Display all cookies button will show all the stored cookies.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #cookieList {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .cookie-item {
+            margin: 5px 0;
+        }
+        .cookie-item span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Cookie Management</h2>
+
+    <!-- Input fields for cookie names and values -->
+    <label for="cookie1Value">Cookie1 Value:</label>
+    <input type="text" id="cookie1Value" placeholder="Enter value for cookie1">
+    <button onclick="setCookie('cookie1', document.getElementById('cookie1Value').value)">Set Cookie1</button>
+    <button onclick="getCookie('cookie1')">Get Cookie1</button>
+    <button onclick="deleteCookie('cookie1')">Delete Cookie1</button>
+
+    <br><br>
+
+    <label for="cookie2Value">Cookie2 Value:</label>
+    <input type="text" id="cookie2Value" placeholder="Enter value for cookie2">
+    <button onclick="setCookie('cookie2', document.getElementById('cookie2Value').value)">Set Cookie2</button>
+    <button onclick="getCookie('cookie2')">Get Cookie2</button>
+    <button onclick="deleteCookie('cookie2')">Delete Cookie2</button>
+
+    <br><br>
+
+    <button onclick="displayCookies()">Display All Cookies</button>
+
+    <div id="cookieList">Cookies will appear here...</div>
+
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 year from now
+            const expiresString = `expires=${expires.toUTCString()}`;
+            document.cookie = `${name}=${value}; ${expiresString}; path=/`;
+            alert(`Cookie "${name}" has been set.`);
+        }
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            const cookieName = `${name}=`;
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            let cookieValue = 'Cookie not found.';
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cookieName) == 0) {
+                    cookieValue = c.substring(cookieName.length, c.length);
+                    break;
+                }
+            }
+            alert(`Value of "${name}": ${cookieValue}`);
+        }
+
+        // Function to delete a cookie by name
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=sat, 24 may 2025 00:00:00 UTC; path=/`;
+            alert(`Cookie "${name}" has been deleted.`);
+        }
+
+        // Function to display all cookies
+        function displayCookies() {
+            const cookieListDiv = document.getElementById('cookieList');
+            const cookies = document.cookie.split(';');
+            cookieListDiv.innerHTML = ''; // Clear current list
+
+            if (cookies.length === 0) {
+                cookieListDiv.innerHTML = 'No cookies found.';
+                return;
+            }
+
+            cookies.forEach(cookie => {
+                const cookiePair = cookie.trim().split('=');
+                const cookieName = decodeURIComponent(cookiePair[0]);
+                const cookieValue = decodeURIComponent(cookiePair[1]);
+                const cookieItem = document.createElement('div');
+                cookieItem.classList.add('cookie-item');
+                cookieItem.innerHTML = `<span>${cookieName}:</span> ${cookieValue}`;
+                cookieListDiv.appendChild(cookieItem);
+            });
+        }
+    </script>
+
+</body>
+</html>

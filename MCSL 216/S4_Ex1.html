@@ -1,0 +1,35 @@
+<!--1. Design an HTML page using JavaScript as shown below. When Try button is
+pressed, the Full Name should be shown below the Try button. (Hint: Use
+concatenation to get Full Name.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Name Display</title>
+  <script>
+    function displayFullName() {
+      // Get values from input fields
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+
+      // Concatenate to form full name
+      var fullName = firstName + " " + lastName;
+
+      // Display the full name
+      document.getElementById("fullNameDisplay").innerText = "Full Name: " + fullName;
+    }
+  </script>
+</head>
+<body>
+  <h1>Enter Your Name</h1>
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" placeholder="Enter first name">
+  <br><br>
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" placeholder="Enter last name">
+  <br><br>
+  <button onclick="displayFullName()">Try</button>
+  <p id="fullNameDisplay"></p>
+</body>
+</html>

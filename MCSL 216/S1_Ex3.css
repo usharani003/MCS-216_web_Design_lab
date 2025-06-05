@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #dac1a0bd;
+    color: rgba(73, 50, 32, 0.822);
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #dac1a0bd;
+    color: rgba(73, 50, 32, 0.822);
+}
+
+.reverse {
+    list-style-type:square;
+    padding: 0;
+}
+
+.reverse li {
+    margin: 10px 0;
+    font-size: 1.2em;
+    margin-left: 29px;
+}
+
+.reverse li:nth-child(odd) {
+    color: rgba(61, 36, 17, 0.822);
+
+}
+
+.reverse li:nth-child(even) {
+    color: #000000;
+}
+
+.interest,
+.disinterest {
+    display: inline-block;
+    width: 45%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.interest {
+    background-color: #d4edda;
+}
+
+.disinterest {
+    background-color: #f8d7da;
+}
+
+.neighbor {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.neighbor div {
+    text-align: center;
+}
+
+.neighbor img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

@@ -1,0 +1,84 @@
+<!--4. Assume you have a function primitiveMultiply that in 20 percent of cases
+multiplies two numbers and in the other 80 percent of cases raises an exception of
+type MultiplicatorUnitFailure. Write a function that wraps this clunky
+function and just keeps trying until a call succeeds, after which it returns the result.
+Make sure you handle only the exceptions you are trying to handle-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reliable Multiplication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Reliable Multiplication</h2>
+    <p>Click the button below to perform a reliable multiplication:</p>
+    <button onclick="performReliableMultiplication()">Multiply</button>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        // Define the custom error class
+        class MultiplicatorUnitFailure extends Error {}
+
+        // Simulate the unreliable multiplication function
+        function primitiveMultiply(a, b) {
+            if (Math.random() < 0.2) {
+                return a * b;
+            } else {
+                throw new MultiplicatorUnitFailure("Multiplication failed");
+            }
+        }
+
+        // Wrapper function to retry until success
+        function reliableMultiply(a, b) {
+            try {
+                return primitiveMultiply(a, b);
+            } catch (e) {
+                if (e instanceof MultiplicatorUnitFailure) {
+                    console.log("Retrying multiplication...");
+                    return reliableMultiply(a, b);
+                } else {
+                    throw e; // Rethrow if it's an unexpected error
+                }
+            }
+        }
+
+        // Function to perform the reliable multiplication and display the result
+        function performReliableMultiplication() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = ''; // Clear previous messages
+
+            try {
+                const result = reliableMultiply(8, 8);
+                messageDiv.innerHTML = `<div class="success"><strong>Success:</strong> The result is ${result}</div>`;
+            } catch (error) {
+                messageDiv.innerHTML = `<div class="error"><strong>Error:</strong> ${error.message}</div>`;
+            }
+        }
+    </script>
+
+</body>
+</html>

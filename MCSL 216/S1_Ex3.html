@@ -1,0 +1,149 @@
+<!--3. Design a web page that describes you. Your page must include following details
+(extra details and creativity are welcome):
+x Your personal details, i.e. name, gender etc.
+x 2-3 lines describing yourself as About Me. Make the most important word
+bold to emphasize them.
+x Details of classes in tabular form you are taking right now (as per your time
+table).
+x Details of your favourite movies, books, or TV shows, in reverse order(using
+CSS), list atleast 3 from each. You can use images, hyperlinks, colourful text
+to make this section attractive.
+x Include a section showing your interest and also not of your interest jobs. In
+this section also you can use images, showing you're happy in doing your
+interest jobs and the other to represent you when you're sad.
+x In this section show something interesting about one or more people of your
+neighbours. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personal Webpage</title>
+    <link rel="stylesheet" href="S1_Ex3.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>USHA RANI VILLA</h1>
+        <p>Gender: Female | Age: 23 | Location: Hyderabad, Telangana</p>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p> I'm <strong>Usha Rani Villa</strong>, I'm an enthusiastic MCA student at IGNOU with a passion for <strong>web development</strong>, I am eager to apply my foundational knowledge of HTML, CSS, and JavaScript to create dynamic and user-friendly websites. I aim to blend functionality with aesthetics in every project I undertake, ensuring an optimal user experience.I am committed to continuous learning and excited to contribute to innovative web solutions that enhance user experience.</p>
+    </section>
+
+    <section>
+        <h2>Current Classes</h2>
+        <table>
+        <thead>
+          <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MCS-211</td>
+            <td>Design and Analysis of Algorithms</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>MCS-212</td>
+            <td>Discrete Mathematics</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>MCS-213</td>
+            <td>Software Engineering</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>MCS-214</td>
+            <td>Professional Skills and Ethics</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>MCS-215</td>
+            <td>Security and Cyber Laws</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>MCSL-216</td>
+            <td>DAA and Web Design Lab</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>MCSL-217</td>
+            <td>Software Engineering Lab</td>
+            <td>2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+        <h2>My Favorites (Reverse Order)</h2>
+        <h3>Movies</h3>
+        <ul class="reverse">
+            <li>Inception</li>
+            <li>The Dark Knight</li>
+            <li>Interstellar</li>
+        </ul>
+        <h3>Books</h3>
+        <ul class="reverse">
+            <li>Good Vibes Good Life</li>
+            <li>Do It Today</li>
+            <li>Healing Is The New High</li>
+        </ul>
+        <h3>TV Shows</h3>
+        <ul class="reverse">
+            <li>Wednesday</li>
+            <li>Stranger Things</li>
+            <li>Game of Thrones</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Interests & Disinterests</h2>
+        <div class="interest">
+            <h3>Interests</h3>
+            <p>Web Development</p>
+            <p>Reading books</p>
+            <p>Watching Anime</p>
+        </div>
+        <div class="disinterest">
+            <h3>Disinterests</h3>
+            <p>Politics</p>
+            <p>Gossip</p>
+            <p>Overcooked Food</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Neighbor Highlights</h2>
+        <div class="neighbor">
+            <div>
+                <img src="./Images/neighbor1.jpg" alt="Neighbor 1">
+                <p>Mr. Govind</p>
+                <p>Always helps with tech issues.</p>
+            </div>
+            <div>
+                <img src="./Images/neighbor2.jpg" alt="Neighbor 2">
+                <p>Mrs. Reddy</p>
+                <p>Excellent cook; often shares recipes.</p>
+            </div>
+            <div>
+                <img src="./Images/neighbor3.jpg" alt="Neighbor 3">
+                <p>Mr. Rama Krishna</p>
+                <p>Organizes community events.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

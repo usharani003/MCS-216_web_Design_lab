@@ -1,0 +1,44 @@
+/* Apply college logo as background image */
+body {
+  background-image: url('./Images/ignou.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(223, 216, 211, 0.689);
+}
+
+header h1 {
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  margin: 1px;
+}
+.rightData{
+    text-align: center;
+}
+/* Table styling */
+table {
+  width: 50%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.label {
+  background-color: yellow;
+  font-weight: bold;
+}

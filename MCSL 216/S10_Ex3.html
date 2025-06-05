@@ -1,0 +1,67 @@
+<!--3. A list of color is provided in the form of drop down list. The background color of
+the web page changes as per the selection of the color from the list by the user. At the
+same time the chosencoloris passed to the cookie. The cookie stores the last choice of
+a user in a browser which will be used on reloading the web page to display the same
+color as background color-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persistent Background Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Choose a Background Color</h2>
+    <select id="colorPicker">
+        <option value="white">White</option>
+        <option value="lightblue">Light Blue</option>
+        <option value="lightgreen">Light Green</option>
+        <option value="lightcoral">Light Coral</option>
+        <option value="lightyellow">Light Yellow</option>
+    </select>
+
+    <script>
+        // Function to get a cookie by name
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+        }
+
+        // Set the background color from the cookie if it exists
+        window.onload = function() {
+            const savedColor = getCookie('bgColor');
+            if (savedColor) {
+                document.body.style.backgroundColor = savedColor;
+                document.getElementById('colorPicker').value = savedColor;
+            }
+        };
+
+        // Update the background color and save the choice in a cookie
+        document.getElementById('colorPicker').addEventListener('change', function() {
+            const selectedColor = this.value;
+            document.body.style.backgroundColor = selectedColor;
+            setCookie('bgColor', selectedColor, 365); // Store for 1 year
+        });
+    </script>
+
+</body>
+</html>

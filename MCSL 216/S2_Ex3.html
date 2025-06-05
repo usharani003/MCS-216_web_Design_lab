@@ -1,0 +1,154 @@
+<!-- 3. Design a webpage for a software company to accept on-line job applications. The
+webpage must be designed to use form with elements:
+ Position applied for (autofocus), name, nationality, date of birth (selected from an
+auto picker), address (in a text area), telephone number and email (required).
+ Educational history and qualifications-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            background-color: #dac1a0bd;
+        }
+        h2,
+        legend {
+            font-weight: bold;
+        }
+
+        .submitBtn {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Job Application</h2>
+    <form action="/submit" method="post">
+        <!-- Position Applied For -->
+        <label for="position">Position Applied For:</label>
+        <input type="text" id="position" name="position" required autofocus><br><br>
+
+        <!-- Personal Details -->
+        <fieldset>
+            <legend>Personal Details</legend>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="nationality">Nationality:</label>
+            <input type="text" id="nationality" name="nationality" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+
+            <label for="phone">Telephone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br><br>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br><br>
+        </fieldset>
+
+        <!-- Educational History and Qualifications -->
+        <fieldset>
+            <legend>Educational History and Qualifications</legend>
+            <label for="education">Highest Level of Education:</label>
+            <select id="education" name="education" required>
+                <option value="highschool">High School</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+                <option value="doctorate">Doctorate</option>
+            </select><br><br>
+
+            <label for="institution">Institution Name:</label>
+            <input type="text" id="institution" name="institution" required><br><br>
+
+            <label for="year">Year of Graduation:</label>
+            <input type="number" id="year" name="year" min="1900" max="2100" required><br><br>
+
+            <label for="qualifications">Additional Qualifications:</label><br>
+            <textarea id="qualifications" name="qualifications" rows="4" cols="50"></textarea><br><br>
+        </fieldset>
+
+        <!-- Work Experience -->
+        <fieldset>
+            <legend>Work Experience</legend>
+            <label for="experience">Years of Experience:</label>
+            <input type="range" id="experience" name="experience" min="0" max="10" step="1" value="0"
+                oninput="updateExperienceLabel(this.value)">
+            <span id="experienceLabel">0</span> years<br><br>
+
+            <label for="employer">Previous Employer:</label>
+            <input type="text" id="employer" name="employer"><br><br>
+
+            <label for="positionHeld">Position Held:</label>
+            <input type="text" id="positionHeld" name="positionHeld"><br><br>
+
+            <label for="duration">Duration (in years):</label>
+            <input type="number" id="duration" name="duration" min="0" max="10"><br><br>
+        </fieldset>
+
+        <!-- Personal Statement -->
+        <fieldset>
+            <legend>Personal Statement</legend>
+            <textarea id="personalStatement" name="personalStatement" rows="4" cols="50"
+                placeholder="Write a brief personal statement..." required></textarea><br><br>
+        </fieldset>
+
+        <!-- Referees -->
+        <fieldset>
+            <legend>Referee 1</legend>
+            <label for="referee1Name">Name:</label>
+            <input type="text" id="referee1Name" name="referee1Name" required><br><br>
+
+            <label for="referee1Occupation">Occupation:</label>
+            <input type="text" id="referee1Occupation" name="referee1Occupation" required><br><br>
+
+            <label for="referee1Relationship">Relationship:</label>
+            <input type="text" id="referee1Relationship" name="referee1Relationship" required><br><br>
+
+            <label for="referee1Address">Address:</label><br>
+            <textarea id="referee1Address" name="referee1Address" rows="3" cols="50" required></textarea><br><br>
+
+            <label for="referee1Phone">Telephone Number:</label>
+            <input type="tel" id="referee1Phone" name="referee1Phone" required><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Referee 2</legend>
+            <label for="referee2Name">Name:</label>
+            <input type="text" id="referee2Name" name="referee2Name" required><br><br>
+
+            <label for="referee2Occupation">Occupation:</label>
+            <input type="text" id="referee2Occupation" name="referee2Occupation" required><br><br>
+
+            <label for="referee2Relationship">Relationship:</label>
+            <input type="text" id="referee2Relationship" name="referee2Relationship" required><br><br>
+
+            <label for="referee2Address">Address:</label><br>
+            <textarea id="referee2Address" name="referee2Address" rows="3" cols="50" required></textarea><br><br>
+
+            <label for="referee2Phone">Telephone Number:</label>
+            <input type="tel" id="referee2Phone" name="referee2Phone" required><br><br>
+        </fieldset>
+        <div class="submitBtn">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        function updateExperienceLabel(value) {
+            document.getElementById('experienceLabel').textContent = value;
+        }
+    </script>
+
+</body>
+
+</html>

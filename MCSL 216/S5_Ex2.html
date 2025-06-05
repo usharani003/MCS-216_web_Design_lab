@@ -1,0 +1,25 @@
+<!-- 2. Design an HTML page to shown that, when this page is loaded it must check the
+cRRNLHV VWaWXV RI XVHU¶V bURZVHU aQd dLVSOa\ a PHVVaJH accRUdLQJO\ LQ WKH SRSXS box
+L.H. LI cRRNLHV aUH HQabOHd VKRZ: ³CRRNLHV aUH HQabOHd´ aQd LI QRW WKHQ VKRZ:
+³CRRNLHV aUH dLVabOHd´. IPSOHPHQW WKH HYHQW ³OQ ORad´ XVLQJ HTML DOM HYHQWV.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Check</title>
+</head>
+<body onload="checkCookies()">
+  <h1>Cookie Check</h1>
+
+  <script>
+    function checkCookies() {
+      if (navigator.cookieEnabled) {
+        alert("Cookies are enabled.");
+      } else {
+        alert("Cookies are disabled.");
+      }
+    }
+  </script>
+</body>
+</html>

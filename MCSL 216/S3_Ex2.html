@@ -1,0 +1,49 @@
+<!--2. Create an HTML webpage to show personal information i.e. name, class,
+qualifications, photo,address etc. Make use of tables as when possible. Apply the
+following styleinformation using CSS:
+- Display the heading of the page in Arial font and with font size of
+18px.
+- Align all the field names like Name, Class, Photo etc to left in the
+table.
+- Apply yellow color as background colour in left side cells contains
+field names like Name, Class etc...
+- Set college logo as background image to the web page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Information</title>
+  <link rel="stylesheet" href="S3_Ex2.css">
+</head>
+<body>
+  <header>
+    <h1>Personal Information</h1>
+  </header>
+  
+  <main>
+    <table>
+      <tr>
+        <td class="label">Name:</td>
+        <td class="rightData">V Usha Rani</td>
+      </tr>
+      <tr>
+        <td class="label">Class:</td>
+        <td class="rightData" >MCA</td>
+      </tr>
+      <tr>
+        <td class="label">Qualifications:</td>
+        <td class="rightData" >High School, Intermediate, BCA</td>
+      </tr>
+      <tr>
+        <td class="label">Photo:</td>
+        <td class="rightData"><img src="./Images/neighbor3.jpg" alt="John Doe" width="100"></td>
+      </tr>
+      <tr>
+        <td class="label">Address:</td>
+        <td class="rightData">123 Main Street, Hyderabad</td>
+      </tr>
+    </table>
+  </main>
+</body>
+</html>

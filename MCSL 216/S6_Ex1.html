@@ -1,0 +1,49 @@
+<!--1. Which function on the document object should be used to retrieve a HTML element
+uniquely?
+To uniquely retrieve an HTML element in the DOM, the document.getElementById() method is the most appropriate function.
+
+🧠 How It Works
+Syntax:
+
+javascript:
+  document.getElementById("elementId");
+
+Parameters:
+
+elementId: A string representing the unique ID of the desired element.
+
+Return Value:
+
+Returns the first element with the specified id attribute. If no element with the given ID exists, it returns null.
+
+✅ Key Points
+Uniqueness:
+IDs should be unique within a document. If multiple elements have the same ID, getElementById() returns the first one found, which can lead to unexpected behavior. It's best practice to ensure that each ID is unique.
+
+Case Sensitivity:
+The id attribute is case-sensitive. For example, document.getElementById("Main") is different from document.getElementById("main").
+
+Usage:
+This method is commonly used for tasks like changing element styles, handling events, or accessing and modifying element content.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>getElementById Example</title>
+</head>
+
+<body>
+    <p id="demo">Hello, World!</p>
+    <button onclick="changeText()">Change Text</button>
+
+    <script>
+        function changeText() {
+            var element = document.getElementById("demo");
+            element.innerHTML = "Text has been changed!";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!-- 1. Design an HTML page as shown below.Implement the event "on button click display the date" using html dom events.
+Before click on submit button:-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Date Example</title>
+  <script>
+    // Function to display the current date
+    function displayDate() {
+      const currentDate = new Date();
+      document.getElementById('dateDisplay').innerHTML = currentDate.toString();
+    }
+
+    // Add event listener to the button after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('showDateButton');
+      button.addEventListener('click', displayDate);
+    });
+  </script>
+</head>
+<body>
+  <h2>Before clicking the button:</h2>
+  <p>The current date will be displayed here after you click the button.</p>
+  <button id="showDateButton">Show Date</button>
+  <p id="dateDisplay"></p>
+</body>
+</html>

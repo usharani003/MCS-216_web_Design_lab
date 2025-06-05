@@ -1,0 +1,65 @@
+/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+    background-image: url(./Images/ignou.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Navigation styling */
+nav ul {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #cf0b0bd9;
+    font-weight: bolder;
+    background-color: #ffcc00;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* Break and lunch styling */
+.break,
+.lunch {
+    background-color: #ffcc00;
+    font-style: italic;
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    table.timetable {
+        font-size: 0.9em;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+}

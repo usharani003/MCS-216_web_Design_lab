@@ -1,0 +1,87 @@
+<!--3.The village crows own an old scalpel that they occasionally use on special
+missions²say, to cut through screen doors or packaging. To be able to quickly track
+it down, every time the scalpel is moved to another nest, an entry is added to the
+storage of both the nest that had it and the nest that took it, under the name "scalpel",
+with its new location as the value.This means that finding the scalpel is a matter of
+following the breadcrumb trail of storage entries, until you find a nest where that
+points at the nest itself.
+Write an async function locateScalpel that does this, starting at the nest on which it
+runs. You can use the anyStorage function defined earlier to access storage in
+arbitrary nests. The scalpel has been going around long enough that you may assume
+that every nest has a "scalpel" entry in its data storage.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locate Scalpel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Locate the Scalpel</h2>
+    <button onclick="locateScalpel()">Find Scalpel</button>
+
+    <div id="result">Result will appear here...</div>
+
+    <script>
+        // Mock anyStorage function simulating storage access in arbitrary nests
+        const storage = {
+            nestA: { scalpel: 'nestB' },
+            nestB: { scalpel: 'nestC' },
+            nestC: { scalpel: 'nestA' } // Circular reference for demonstration
+        };
+
+        async function anyStorage(nest, key) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (storage[nest] && storage[nest][key]) {
+                        resolve(storage[nest][key]);
+                    } else {
+                        reject(new Error('Key not found'));
+                    }
+                }, 100);
+            });
+        }
+
+        // locateScalpel function to trace the scalpel's movement
+        async function locateScalpel() {
+            const startNest = 'nestA'; // Starting nest
+            let currentNest = startNest;
+            let visitedNests = new Set();
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Searching for the scalpel...';
+
+            while (currentNest && !visitedNests.has(currentNest)) {
+                visitedNests.add(currentNest);
+                try {
+                    const nextNest = await anyStorage(currentNest, 'scalpel');
+                    if (nextNest === currentNest) {
+                        resultDiv.textContent = `Scalpel found in ${currentNest}`;
+                        return;
+                    }
+                    currentNest = nextNest;
+                } catch (error) {
+                    resultDiv.textContent = `Error: ${error.message}`;
+                    return;
+                }
+            }
+
+            resultDiv.textContent = 'Scalpel not found or circular reference detected.';
+        }
+    </script>
+
+</body>
+</html>
